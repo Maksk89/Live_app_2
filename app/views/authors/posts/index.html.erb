@@ -1,0 +1,22 @@
+<h4 class="d-flex justify-content-between mb-4">
+  <span>Posts</span>
+  <%= link_to 'New Post', new_post_path, class: "btn btn-primary" %>
+</h4>
+
+    <% @posts.each do |post| %>
+  <div class="card mb-3 post-card">
+    <h3 class="card-title">
+      <%= post.title %>
+    </h3>
+    <p class="text-secondary mb-0"><%= post.body %></p>
+        <div><%= post.author.email %></div>
+        <div><%= post.created_at %></div>
+        <div class="btn-group" role="group" >
+        <span><%= link_to 'Show', post, class: "btn btn-secondary mr-1" %></span>
+        <span><%= link_to 'Edit', edit_post_path(post), class: "btn btn-secondary mr-1" %></span>
+        <span><%= link_to 'Destroy', post, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        </div>
+    <% end %>
+  </div>
+
+
